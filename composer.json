@@ -1,0 +1,22 @@
+{
+    "name": "vris111/practika_serv",
+    "description": "some desk",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vris111",
+            "email": "ruslansimanovic56@mail.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "core/Src/",
+            "": "app/"
+        }
+    }
+}
