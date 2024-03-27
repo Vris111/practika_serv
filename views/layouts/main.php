@@ -19,6 +19,10 @@
         <?php
         else:
             ?>
+            <a href="<?= app()->route->getUrl('/numbers') ?>">Номера</a>
+            <a href="<?= app()->route->getUrl('/abonents') ?>">Абоненты</a>
+            <a href="<?= app()->route->getUrl('/rooms') ?>">Помещения</a>
+            <a href="<?= app()->route->getUrl('/divisions') ?>">Подразделения</a>
             <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
         <?php
         endif;

@@ -41,4 +41,11 @@ class Site
         Auth::logout();
         app()->route->redirect('/hello');
     }
+    public function abonents(Request $request): string
+    {
+        if ($request->method === 'POST' && User::create($request->all())) {
+            app()->route->redirect('/abonents');
+        }
+        return new View('site.abonents');
+    }
 }
