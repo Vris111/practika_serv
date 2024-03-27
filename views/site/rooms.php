@@ -2,9 +2,10 @@
 <ol>
     <?php
     foreach ($rooms as $room) {
-        echo '<li>' . $room->name . '</li>';
-        echo '<li>' . $room->type_id->name . '</li>';
-        echo '<li>' . $room->division_id->name . '</li>';
+        echo '<p>' . $room->name . '</p>';
+        echo '<p>' . $room->type_id . '</p>';
+        echo '<p>' . $room->division_id . '</p>';
+        echo '<p>' . '---------------' . '</p>';
     }
     ?>
 </ol>

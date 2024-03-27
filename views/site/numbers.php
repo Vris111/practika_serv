@@ -1,10 +1,11 @@
 <h1>Телефонные данные</h1>
 <ol>
     <?php
-    foreach ($telephones as $telephone) {
-        echo '<li>' . $telephone->number . '</li>';
-        echo '<li>' . $telephone->room_id->name . '</li>';
-        echo '<li>' . $telephone->abonent_id->name . '</li>';
+    foreach ($numbers as $number) {
+        echo '<p>' . $number->number . '</p>';
+        echo '<p>' . $number->room_id . '</p>';
+        echo '<p>' . $number->abonent_id . '</p>';
+        echo '<p>' . '-------------------' . '</p>';
     }
     ?>
 </ol>

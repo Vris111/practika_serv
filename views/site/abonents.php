@@ -1,12 +1,12 @@
-<h1>подразделения</h1>
+<h1>Абоненты</h1>
 <ol>
     <?php
     foreach ($abonents as $abonent) {
-        echo '<li>' . $abonent->surname . '</li>';
-        echo '<li>' . $abonent->name . '</li>';
-        echo '<li>' . $abonent->patronymic . '</li>';
-        echo '<li>' . $abonent->date_of_birth . '</li>';
-        echo '<li>' . $abonent->division->name . '</li>';
+        echo '<p>' . $abonent->surname . '</p>';
+        echo '<p>' . $abonent->name . '</p>';
+        echo '<p>' . $abonent->patronymic . '</p>';
+        echo '<p>' . $abonent->date_of_birth . '</p>';
+        echo '<p>' . '-------------------------' . '</p>';
     }
     ?>
 </ol>

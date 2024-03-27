@@ -2,8 +2,8 @@
 <ol>
     <?php
     foreach ($divisions as $division) {
-        echo '<li>' . $division->name . '</li>';
-        echo '<li>' . $division->type_id->name . '</li>';
+        echo '<p>' . $division->name . '</p>';
+        echo '<p>' . $division->type_id . '</p>';
     }
     ?>
 </ol>
