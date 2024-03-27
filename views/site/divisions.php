@@ -1,4 +1,4 @@
-<h1>подразделения</h1>
+<h1 class="topic">Подразделения</h1>
 <ol>
     <?php
     foreach ($divisions as $division) {
@@ -8,8 +8,8 @@
     ?>
 </ol>
 <h2>Добавить новое подразделение</h2>
-<form method="post">
+<form method="post" class="form">
     <label>Название <input type="text" name="name"></label>
     <label>Тип подразделения <input type="text" name="type"></label>
-    <button>Добавить</button>
+    <button class="btn">Добавить</button>
 </form>

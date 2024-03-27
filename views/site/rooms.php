@@ -1,4 +1,4 @@
-<h1>Помещения</h1>
+<h1 class="topic">Помещения</h1>
 <ol>
     <?php
     foreach ($rooms as $room) {
@@ -10,9 +10,9 @@
     ?>
 </ol>
 <h2>Добавить новое помещение</h2>
-<form method="post">
+<form method="post" class="form">
     <label>Название <input type="text" name="name"></label>
     <label>Тип помещения <input type="text" name="type"></label>
     <label>Подразделение <input type="text" name="division"></label>
-    <button>Добавить</button>
+    <button class="btn">Добавить</button>
 </form>

@@ -11,28 +11,41 @@
 <body>
 <header>
     <nav class="nav">
-        <a href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
+        <a class="nav_link_home" href="<?= app()->route->getUrl('/hello') ?>">Главная</a>
         <?php
         if (!app()->auth::check()):
             ?>
-            <a href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-            <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
+            <a class="nav_link_in" href="<?= app()->route->getUrl('/login') ?>">Вход</a>
+            <a class="nav_link_in_2" href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
         <?php
         else:
             ?>
-            <a href="<?= app()->route->getUrl('/numbers') ?>">Номера</a>
-            <a href="<?= app()->route->getUrl('/abonents') ?>">Абоненты</a>
-            <a href="<?= app()->route->getUrl('/rooms') ?>">Помещения</a>
-            <a href="<?= app()->route->getUrl('/divisions') ?>">Подразделения</a>
-            <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
+            <a class="nav_link" href="<?= app()->route->getUrl('/numbers') ?>">Номера</a>
+            <a class="nav_link" href="<?= app()->route->getUrl('/abonents') ?>">Абоненты</a>
+            <a class="nav_link" href="<?= app()->route->getUrl('/rooms') ?>">Помещения</a>
+            <a class="nav_link" href="<?= app()->route->getUrl('/divisions') ?>">Подразделения</a>
+            <a class="nav_link_logout" href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
         <?php
         endif;
         ?>
     </nav>
 </header>
-<main>
+<main class="wrap">
     <?= $content ?? '' ?>
 </main>
-
+<footer>
+    <div class="foo">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid error eum
+        laudantium magni molestias nam non omnis, pariatur porro quam quisquam repellendus sed, tempora unde. Aliquid harum temporibus voluptatem!
+    </div>
+    <div class="foo">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid error eum
+        laudantium magni molestias nam non omnis!
+    </div>
+    <div class="foo">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid error eum
+        laudantium magni molestias nam non omnis, pariatur porro quam quisquam repellendus sed!
+    </div>
+</footer>
 </body>
 </html>

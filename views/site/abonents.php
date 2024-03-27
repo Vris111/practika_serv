@@ -1,4 +1,4 @@
-<h1>Абоненты</h1>
+<h1 class="topic">Абоненты</h1>
 <ol>
     <?php
     foreach ($abonents as $abonent) {
@@ -11,11 +11,11 @@
     ?>
 </ol>
 <h2>Добавить нового абонента</h2>
-<form method="post">
+<form method="post" class="form">
     <label>Фамилия <input type="text" name="surname"></label>
     <label>Имя <input type="text" name="name"></label>
     <label>Отчество <input type="text" name="patronymic"></label>
     <label>Дата рождения <input type="date" name="date_of_birth"></label>
     <label>Тип подразделения <input type="text" name="type"></label>
-    <button>Добавить</button>
+    <button class="btn">Добавить</button>
 </form>
