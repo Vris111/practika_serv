@@ -108,16 +108,18 @@ a{
 
 .login_form{
     position: relative;
-    margin-top: 10px;
+    margin-top: 50px;
     left: 42%;
     display: flex;
     flex-direction: column;
     gap: 10px;
     border: 1px solid black;
     width: 300px;
-    padding: 10px;
+    padding: 15px;
     font-size: 24px;
     justify-content: space-around;
+    height: 300px;
+    box-shadow: 1px 2px 10px 2px;
 }
 
 .inp_login{
@@ -157,4 +159,9 @@ footer{
 
 .label{
     font-size: 18px;
+}
+
+.login_btn{
+    height: 35px;
+    font-size: 20px;
 }
