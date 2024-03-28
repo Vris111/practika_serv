@@ -6,6 +6,6 @@ Route::add(['GET', 'POST'], '/signup', [Controller\Site::class, 'signup'])->midd
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
 Route::add(['GET', 'POST'], '/abonents', [Controller\Site::class, 'abonents']);
-Route::add('GET', '/divisions', [Controller\Site::class, 'divisions']);
-Route::add('GET', '/numbers', [Controller\Site::class, 'numbers']);
-Route::add('GET', '/rooms', [Controller\Site::class, 'rooms']);
+Route::add(['GET', 'POST'], '/divisions', [Controller\Site::class, 'divisions']);
+Route::add(['GET', 'POST'], '/numbers', [Controller\Site::class, 'numbers']);
+Route::add(['GET', 'POST'], '/rooms', [Controller\Site::class, 'rooms']);

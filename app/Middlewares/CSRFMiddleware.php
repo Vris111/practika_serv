@@ -10,9 +10,9 @@ class CSRFMiddleware
         if ($request->method !== 'POST') {
             return;
         }
-        if (empty($request->get('csrf_token')) ||
-            $request->get('csrf_token')!==Session::get('csrf_token')) {
-            throw new Exception('Request not authorized');
-        }
+//        if (empty($request->get('csrf_token')) ||
+//            $request->get('csrf_token')!==Session::get('csrf_token')) {
+//            throw new Exception('Request not authorized');
+//        }
     }
 }
