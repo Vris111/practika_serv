@@ -16,7 +16,6 @@
         if (!app()->auth::check()):
             ?>
             <a class="nav_link_in" href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-            <a class="nav_link_in_2" href="<?= app()->route->getUrl('/signup') ?>">Добавить сисадмина</a>
         <?php
         else:
             ?>
@@ -24,6 +23,7 @@
             <a class="nav_link" href="<?= app()->route->getUrl('/abonents') ?>">Абоненты</a>
             <a class="nav_link" href="<?= app()->route->getUrl('/rooms') ?>">Помещения</a>
             <a class="nav_link" href="<?= app()->route->getUrl('/divisions') ?>">Подразделения</a>
+            <a class="nav_link_in_2" href="<?= app()->route->getUrl('/signup') ?>">Добавить сисадмина</a>
             <a class="nav_link_logout" href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
         <?php
         endif;

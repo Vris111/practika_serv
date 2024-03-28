@@ -1,4 +1,4 @@
-<h1 class="topic" >Авторизация</h2>
+<h1 class="topic" >Авторизация</h1>
 <h3><?= $message ?? ''; ?></h3>
 
 <h3><?= app()->auth->user()->name ?? ''; ?></h3>
