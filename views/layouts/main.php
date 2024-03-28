@@ -16,7 +16,7 @@
         if (!app()->auth::check()):
             ?>
             <a class="nav_link_in" href="<?= app()->route->getUrl('/login') ?>">Вход</a>
-            <a class="nav_link_in_2" href="<?= app()->route->getUrl('/signup') ?>">Регистрация</a>
+            <a class="nav_link_in_2" href="<?= app()->route->getUrl('/signup') ?>">Добавить сисадмина</a>
         <?php
         else:
             ?>
