@@ -28,6 +28,10 @@ class User extends Model implements IdentityInterface
     {
         return $this->id;
     }
+    public function getRoleId(): int
+    {
+        return $this->role_id;
+    }
     public function attemptIdentity(array $credentials)
     {
         return self::where(['login' => $credentials['login'],

@@ -41,4 +41,11 @@ class Auth
         Session::clear('id');
         return true;
     }
+    public static function adminCheck(): bool
+    {
+        if(self::$user->getRoleId() == 2){
+            return true;
+        }
+        return false;
+    }
 }
