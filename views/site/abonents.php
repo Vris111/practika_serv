@@ -2,6 +2,32 @@
 <div style="display: flex; gap 50px">
 <div style="margin-left: 10%; margin-top: 40px; border: 1px solid black; width: 1200px; height: 600px; padding: 20px; box-shadow: 5px 5px 10px 1px;"> 
 <div style="border: 1px solid black; width: 1180px; padding: 10px; height: 580px; box-shadow: 5px 5px 10px 1px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; gap: 10px">
+                <p style="font-size: 18px; margin-right: 26px">Выбрать помещение</p>
+                <select style="font-size: 14px; padding: 2px" name="building" id="building-select">
+                    <option value="all">Все помещения</option>
+                    <option value="1">-</option>
+                    <option value="2">-</option>
+                    <option value="3">-</option>
+                </select>
+            </div>
+            <div style="display: flex; gap: 10px">
+                <p style="font-size: 18px">Выбрать подразделение</p>
+                <select style="font-size: 14px; padding: 2px" name="divisions" id="divisions-select">
+                    <option value="all">Все подразделение</option>
+                    <option value="1">-</option>
+                    <option value="2">-</option>
+                    <option value="3">-</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <input style="width: 200px; padding: 3px" type="search" name="search" id="search-input" placeholder="Поиск по фамилии или имени">
+            <button class="btn">Поиск</button>
+        </div>
+    </div>
     <?php
     foreach ($abonents as $abonent) {
         echo '<div style="display: flex; flex-direction: row; justify-content: space-around; box-shadow: 1px 1px 2px 1px; >';
