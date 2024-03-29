@@ -21,14 +21,27 @@
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label class="label">Номер <input style="width: 250px; height: 20px" type="text" name="number"></label>
     <!-- <label class="label">Помещение <input style="width: 210px; height: 20px" type="text" name="room_id"></label> -->
-    <select name="room_id" id="room_id">
+    <div style='display:flex;'>
+        <p>Помещение</p>
+        <select name="room_id" id="room_id">
         <?php
             foreach ($rooms as $room){
-                echo '<p>' . $room->room_id . '</p>';
+                echo '<option value="' . $room->id . '">' . $room->id . '</option>';
             }        
         ?>
     </select>
-    <label class="label">Абонент <input style="width: 235px; height: 20px" type="text" name="abonent_id"></label>
+    </div>
+    <!-- <label class="label">Абонент <input style="width: 235px; height: 20px" type="text" name="abonent_id"></label> -->
+    <div style='display:flex;'>
+        <p>Абонент</p>
+        <select name="abonent_id" id="abonent_id ">
+        <?php
+            foreach ($abonents as $abonent){
+                echo '<option value="' . $abonent->id . '">' . $abonent->id . '</option>';
+            }        
+        ?>
+    </select>
+    </div>
     <button class="btn">Добавить</button>
 </form>
 </div>

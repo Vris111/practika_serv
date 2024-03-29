@@ -83,10 +83,11 @@ class Site
     {
         $numbers = Telephones::all();
         $rooms = Rooms::all();
+        $abonents = Abonents::all();
         if ($request->method === 'POST'&& Telephones::create($request->all())){
             app()->route->redirect('/numbers');
         }
-        return new View('site.numbers', ['numbers' => $numbers]);
+        return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
     }
     public function rooms(Request $request): string
     {
