@@ -82,6 +82,7 @@ class Site
     public function numbers(Request $request): string
     {
         $numbers = Telephones::all();
+        $rooms = Rooms::all();
         if ($request->method === 'POST'&& Telephones::create($request->all())){
             app()->route->redirect('/numbers');
         }

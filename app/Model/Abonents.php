@@ -14,6 +14,7 @@ class Abonents extends Model
         'surname',
         'patronymic',
         'division',
-        'date_of_birth'
+        'date_of_birth',
+        'division_id'
     ];
 }

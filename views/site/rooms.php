@@ -17,9 +17,10 @@
 <h2>Добавить новое помещение</h2>
 <form method="post" class="form" style='border: 1px solid black; width: 330px; height: 120px; padding: 20px; display: flex;
  flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label class="label">Название <input style="width: 249px; height: 20px" type="text" name="name"></label>
-    <label class="label">Тип помещения <input style="width: 200px; height: 20px" type="text" name="type"></label>
-    <label class="label">Подразделение <input style="width: 205px; height: 20px" type="text" name="division"></label>
+    <label class="label">Тип помещения <input style="width: 200px; height: 20px" type="text" name="type_id"></label>
+    <label class="label">Подразделение <input style="width: 205px; height: 20px" type="text" name="division_id"></label>
     <button class="btn">Добавить</button>
 </form>
 </div>
