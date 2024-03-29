@@ -12,6 +12,7 @@ class Rooms extends Model
     protected $fillable = [
         'name',
         'type_id',
-        'division_id'
+        'division_id',
+        'img'
     ];
 }

@@ -8,6 +8,7 @@
         echo '<p style="font-size: 40px">' . $room->name . '</p>';
         echo '<p style="font-size: 24px">' . $room->type_id . '</p>';
         echo '<p style="font-size: 24px">' . $room->division_id . '</p>';
+        echo '<p style="font-size: 24px"><img style="width: 30px; height: 30px" src="/public/img/' . $room->img . '" alt=""></p>';
         echo '</div>';
     }
     ?>
@@ -15,7 +16,7 @@
 </div>
 <div style="display:flex; flex-direction: column; margin-top: 80px; margin-left: 50px">
 <h2>Добавить новое помещение</h2>
-<form method="post" class="form" style='border: 1px solid black; width: 330px; height: 120px; padding: 20px; display: flex;
+<form method="post" class="form" style='border: 1px solid black; width: 330px; height: 140px; padding: 20px; display: flex;
  flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label class="label">Название <input style="width: 249px; height: 20px" type="text" name="name"></label>
@@ -38,6 +39,11 @@
             }
             ?>
         </select>
+    </div>
+    <div style='display:flex'>
+        <label class="label">Фото  <input type="file" name="img"></label>
+        <?php if(isset($room) && $room->img !== null): ?>
+        <?php endif; ?>
     </div>
     <button class="btn">Добавить</button>
 </form>
