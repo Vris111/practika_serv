@@ -5,6 +5,8 @@ use Model\Divisions;
 use Model\Rooms;
 use Model\Telephones;
 use Model\Post;
+use Model\Rooms_types;
+use Model\Divisions_types;
 use Src\View;
 use Src\Request;
 use Model\User;
@@ -66,18 +68,20 @@ class Site
     public function abonents(Request $request): string
     {
         $abonents = Abonents::all();
+        $divisions = Divisions::all();
         if ($request->method === 'POST'&& Abonents::create($request->all())){
             app()->route->redirect('/abonents');
         }
-        return new View('site.abonents', ['abonents' => $abonents]);
+        return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
     }
     public function divisions(Request $request): string
     {
         $divisions = Divisions::all();
+        $divisions_types = Divisions_types::all();
         if ($request->method === 'POST'&& Divisions::create($request->all())){
             app()->route->redirect('/divisions');
         }
-        return new View('site.divisions', ['divisions' => $divisions]);
+        return new View('site.divisions', ['divisions' => $divisions, 'divisions_types' => $divisions_types]);
     }
     public function numbers(Request $request): string
     {
@@ -92,9 +96,11 @@ class Site
     public function rooms(Request $request): string
     {
         $rooms = Rooms::all();
+        $divisions = Divisions::all();
+        $rooms_types = Rooms_types::all();
         if ($request->method === 'POST'&& Rooms::create($request->all())){
             app()->route->redirect('/rooms');
         }
-        return new View('site.rooms', ['rooms' => $rooms]);
+        return new View('site.rooms', ['rooms' => $rooms, 'divisions' => $divisions, 'rooms_types' => $rooms_types]);
     }
 }

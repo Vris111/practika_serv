@@ -15,8 +15,18 @@
 <div style="display:flex; flex-direction: column; margin-top: 80px; margin-left: 50px">
 <h2>Добавить новое подразделение</h2>
 <form method="post" class="form" style='border: 1px solid black; width: 330px; height: 100px; padding: 20px; display: flex; flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label class="label">Название <input style="width: 245px; height: 20px" type="text" name="name"></label>
-    <label class="label">Тип подразделения <input style="width: 170px; height: 20px" type="text" name="type"></label>
+    <div style='display:flex;'>
+        <p style="margin-right: 5px">Тип подразделения</p>
+        <select style="height: 20px; width: 60px;" name="type_id" id="type_id">
+            <?php
+            foreach ($divisions_types as $divisions_type){
+                echo '<option value="' . $divisions_type->id . '">' . $divisions_type->name . '</option>';
+            }
+            ?>
+        </select>
+    </div>
     <button class="btn">Добавить</button>
 </form>
 </div>

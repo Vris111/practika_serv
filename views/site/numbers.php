@@ -20,24 +20,22 @@
  flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label class="label">Номер <input style="width: 250px; height: 20px" type="text" name="number"></label>
-    <!-- <label class="label">Помещение <input style="width: 210px; height: 20px" type="text" name="room_id"></label> -->
     <div style='display:flex;'>
-        <p>Помещение</p>
-        <select name="room_id" id="room_id">
+        <p style="margin-right: 5px">Помещение</p>
+        <select style="height: 20px; width: 100px;" name="room_id" id="room_id">
         <?php
             foreach ($rooms as $room){
-                echo '<option value="' . $room->id . '">' . $room->id . '</option>';
+                echo '<option value="' . $room->id . '">' . $room->name . '</option>';
             }        
         ?>
     </select>
     </div>
-    <!-- <label class="label">Абонент <input style="width: 235px; height: 20px" type="text" name="abonent_id"></label> -->
     <div style='display:flex;'>
-        <p>Абонент</p>
-        <select name="abonent_id" id="abonent_id ">
+        <p style="margin-right: 5px">Абонент</p>
+        <select style="height: 20px; width: 80px" name="abonent_id" id="abonent_id ">
         <?php
             foreach ($abonents as $abonent){
-                echo '<option value="' . $abonent->id . '">' . $abonent->id . '</option>';
+                echo '<option value="' . $abonent->id . '">' . $abonent->name . '</option>';
             }        
         ?>
     </select>

@@ -43,11 +43,20 @@
 <div style="display:flex; flex-direction: column; margin-top: 80px; margin-left: 50px">
 <h2>Добавить нового абонента</h2>
 <form method="post" class="form" style='border: 1px solid black; width: 330px; height: 200px; padding: 20px; display: flex; flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label class="label">Фамилия <input style="width: 250px; height: 20px" type="text" name="surname"></label>
     <label class="label">Имя <input style="width: 287px; height: 20px" type="text" name="name"></label>
     <label class="label">Отчество <input style="width: 247px; height: 20px" type="text" name="patronymic"></label>
     <label class="label">Дата рождения <input style="width: 205px; height: 20px" type="date" name="date_of_birth"></label>
-    <label class="label">Тип подразделения <input style="width: 173px; height: 20px" type="text" name="type"></label>
+    <div style='display:flex; align-items: center'>
+        <p style="margin-right: 5px">Подразделение</p>
+        <select style="height: 20px; margin-right: 10px" name="division_id" id="division_id ">
+            <?php
+            foreach ($divisions as $division){
+                echo '<option value="' . $division->id . '">' . $division->name . '</option>';
+            }
+            ?>
+        </select>
     <button class="btn">Добавить</button>
 </form>
 </div>

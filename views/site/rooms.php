@@ -19,8 +19,26 @@
  flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
     <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <label class="label">Название <input style="width: 249px; height: 20px" type="text" name="name"></label>
-    <label class="label">Тип помещения <input style="width: 200px; height: 20px" type="text" name="type_id"></label>
-    <label class="label">Подразделение <input style="width: 205px; height: 20px" type="text" name="division_id"></label>
+    <div style='display:flex;'>
+        <p style="margin-right: 5px">Тип помещения </p>
+        <select style="height: 20px; width: 80px;" name="type_id" id="type_id">
+            <?php
+            foreach ($rooms_types as $rooms_type){
+                echo '<option value="' . $rooms_type->id . '">' . $rooms_type->name . '</option>';
+            }
+            ?>
+        </select>
+    </div>
+    <div style='display:flex;'>
+        <p style="margin-right: 5px">Подразделение</p>
+        <select style="height: 20px; width: 85px;" name="division_id" id="division_id">
+            <?php
+            foreach ($divisions as $division){
+                echo '<option value="' . $division->id . '">' . $division->name . '</option>';
+            }
+            ?>
+        </select>
+    </div>
     <button class="btn">Добавить</button>
 </form>
 </div>
