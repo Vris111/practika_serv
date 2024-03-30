@@ -9,7 +9,7 @@
                         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
                         <input style="width: 250px; padding: 3px" type="search" name="search" id="search-input" placeholder="Поиск по номеру помещения">
                         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
-                        <input type="submit" class="btn"></input>
+                        <input type="submit" style="width: 70px "></input>
                     </form>
                 </div>
             </div>
@@ -34,7 +34,7 @@
     </div>
     <div style="display:flex; flex-direction: column; margin-top: 80px">
         <h2>Добавить новый телефон</h2>
-        <form method="post" class="" style='border: 1px solid black; width: 330px; height: 120px; padding: 20px; display: flex;
+        <form method="post" class="" style='border: 1px solid black; width: 330px; height: 150px; padding: 20px; display: flex;
  flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
             <h3><?= $message ?? ''; ?></h3>

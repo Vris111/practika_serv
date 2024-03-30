@@ -37,7 +37,8 @@ class Site
                 'password' => ['required']
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально'
+                'unique' => 'Поле :field должно быть уникально',
+                'specialSymbols' => 'Поле :field не должно содержать спец символы',
             ]);
 
             if($validator->fails()){
@@ -61,7 +62,8 @@ class Site
                 'name' => ['required', 'unique:divisions,name', 'specialSymbols'],
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально'
+                'unique' => 'Поле :field должно быть уникально',
+                'specialSymbols' => 'Поле :field не должно содержать спец символы',
             ]);
 
             if($validator->fails()){
@@ -101,9 +103,26 @@ class Site
             }
         } else {
             $abonents = Abonents::all();
-            if ($request->method === 'POST'&& Abonents::create($request->all())){
-                app()->route->redirect('/abonents');
-                return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
+            if ($request->method === 'POST'){
+
+                $validator = new Validator($request->all(), [
+                    'surname' => ['required', 'specialSymbols'],
+                    'name' => ['required', 'specialSymbols'],
+                    'patronymic' => ['required', 'specialSymbols'],
+                ], [
+                    'required' => 'Поле :field пусто',
+                    'specialSymbols' => 'Поле :field не должно содержать спец символы',
+                ]);
+
+                if($validator->fails()){
+                    return new View('site.abonents',
+                        ['abonents'=>$abonents, 'divisions' => $divisions, 'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                }
+
+                if(Abonents::create($request->all())){
+                    app()->route->redirect('/abonents');
+                    return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
+                }
             }
         }
         return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
@@ -124,15 +143,16 @@ class Site
             if ($request->method === 'POST'){
 
                 $validator = new Validator($request->all(), [
-                    'number' => ['required', 'unique:divisions,name', 'specialSymbols'],
+                    'number' => ['required', 'specialSymbols'],
                 ], [
                     'required' => 'Поле :field пусто',
-                    'unique' => 'Поле :field должно быть уникально'
+                    'unique' => 'Поле :field должно быть уникально',
+                    'specialSymbols' => 'Поле :field не должно содержать спец символы',
                 ]);
 
                 if($validator->fails()){
                     return new View('site.numbers',
-                        ['numbers'=>$numbers, 'rooms' =>$rooms ,'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                        ['numbers'=>$numbers, 'abonents' => $abonents, 'rooms' =>$rooms ,'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
                 }
 
                 if(Telephones::create($request->all())){
@@ -154,7 +174,8 @@ class Site
                 'name' => ['required', 'unique:divisions,name', 'specialSymbols'],
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально'
+                'unique' => 'Поле :field должно быть уникально',
+                'specialSymbols' => 'Поле :field не должно содержать спец символы',
             ]);
 
             if($validator->fails()){
