@@ -1,5 +1,6 @@
 <?php
 namespace Controller;
+use Illuminate\Support\Number;
 use Model\Abonents;
 use Model\Divisions;
 use Model\Rooms;
@@ -71,9 +72,7 @@ class Site
         if (isset($_POST['search'])) {
             $search = $_POST['search'];
             if ($request->method === 'POST'){
-                $abonents = Abonents::where('name', 'like', "%{$search}%")->orWhere('surname', 'like', "%{$search}%")
-                    ->orWhere('patronymic', 'like', "%{$search}%")->orWhere('date_of_birth', 'like', "%{$search}%")
-                    ->get();
+                $abonents = Abonents::where('division_id', 'like', "%{$search}%")->get();
                 return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
             }
         } else {
@@ -85,6 +84,26 @@ class Site
         }
         return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
     }
+    public function numbers(Request $request): string
+    {
+        $rooms = Rooms::all();
+        $abonents = Abonents::all();
+
+        if (isset($_POST['search'])) {
+            $search = $_POST['search'];
+            if ($request->method === 'POST'){
+                $numbers = Telephones::where('room_id', 'like', "%{$search}%")->get();
+                return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
+            }
+        } else {
+            $numbers = Telephones::all();
+            if ($request->method === 'POST'&& Telephones::create($request->all())){
+                app()->route->redirect('/numbers');
+                return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
+            }
+        }
+        return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
+    }
     public function divisions(Request $request): string
     {
         $divisions = Divisions::all();
@@ -93,16 +112,6 @@ class Site
             app()->route->redirect('/divisions');
         }
         return new View('site.divisions', ['divisions' => $divisions, 'divisions_types' => $divisions_types]);
-    }
-    public function numbers(Request $request): string
-    {
-        $numbers = Telephones::all();
-        $rooms = Rooms::all();
-        $abonents = Abonents::all();
-        if ($request->method === 'POST'&& Telephones::create($request->all())){
-            app()->route->redirect('/numbers');
-        }
-        return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
     }
     public function rooms(Request $request): string
     {
