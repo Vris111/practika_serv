@@ -39,6 +39,7 @@
         <h2>Добавить нового абонента</h2>
         <form method="post" class="form" style='border: 1px solid black; width: 330px; height: 200px; padding: 20px; display: flex; flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+            <h3><?= $message ?? ''; ?></h3>
             <label class="label">Фамилия <input style="width: 250px; height: 20px" type="text" name="surname"></label>
             <label class="label">Имя <input style="width: 287px; height: 20px" type="text" name="name"></label>
             <label class="label">Отчество <input style="width: 247px; height: 20px" type="text" name="patronymic"></label>

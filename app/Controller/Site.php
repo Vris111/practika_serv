@@ -20,7 +20,7 @@ class Site
 //    public function index(Request $request): string
     {
         $posts = Post::all();
-        $posts = Post::where('id', $request->id)->get();
+//        $posts = Post::where('id', $request->id)->get();
         return (new View())->render('site.post', ['posts' => $posts]);
     }
     public function hello(): string
@@ -50,6 +50,30 @@ class Site
             }
         }
         return new View('site.signup');
+    }
+    public function divisions(Request $request): string
+    {
+        $divisions = Divisions::all();
+        $divisions_types = Divisions_types::all();
+        if ($request->method === 'POST'){
+
+            $validator = new Validator($request->all(), [
+                'name' => ['required', 'unique:divisions,name', 'specialSymbols'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'unique' => 'Поле :field должно быть уникально'
+            ]);
+
+            if($validator->fails()){
+                return new View('site.divisions',
+                    ['divisions'=>$divisions, 'divisions_types' =>$divisions_types ,'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+
+            if(Divisions::create($request->all())){
+                app()->route->redirect('/divisions');
+            }
+        }
+        return new View('site.divisions', ['divisions' => $divisions, 'divisions_types' => $divisions_types]);
     }
     public function login(Request $request): string
     {
@@ -97,29 +121,50 @@ class Site
             }
         } else {
             $numbers = Telephones::all();
-            if ($request->method === 'POST'&& Telephones::create($request->all())){
-                app()->route->redirect('/numbers');
-                return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
+            if ($request->method === 'POST'){
+
+                $validator = new Validator($request->all(), [
+                    'number' => ['required', 'unique:divisions,name', 'specialSymbols'],
+                ], [
+                    'required' => 'Поле :field пусто',
+                    'unique' => 'Поле :field должно быть уникально'
+                ]);
+
+                if($validator->fails()){
+                    return new View('site.numbers',
+                        ['numbers'=>$numbers, 'rooms' =>$rooms ,'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                }
+
+                if(Telephones::create($request->all())){
+                    app()->route->redirect('/numbers');
+                    return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
+                }
             }
         }
         return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
-    }
-    public function divisions(Request $request): string
-    {
-        $divisions = Divisions::all();
-        $divisions_types = Divisions_types::all();
-        if ($request->method === 'POST'&& Divisions::create($request->all())){
-            app()->route->redirect('/divisions');
-        }
-        return new View('site.divisions', ['divisions' => $divisions, 'divisions_types' => $divisions_types]);
     }
     public function rooms(Request $request): string
     {
         $rooms = Rooms::all();
         $divisions = Divisions::all();
         $rooms_types = Rooms_types::all();
-        if ($request->method === 'POST'&& Rooms::create($request->all())){
-            app()->route->redirect('/rooms');
+        if ($request->method === 'POST'){
+
+            $validator = new Validator($request->all(), [
+                'name' => ['required', 'unique:divisions,name', 'specialSymbols'],
+            ], [
+                'required' => 'Поле :field пусто',
+                'unique' => 'Поле :field должно быть уникально'
+            ]);
+
+            if($validator->fails()){
+                return new View('site.rooms',
+                    ['rooms'=>$rooms, 'rooms_types' =>$rooms_types ,'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+
+            if(Rooms::create($request->all())){
+                app()->route->redirect('/rooms');
+            }
         }
         return new View('site.rooms', ['rooms' => $rooms, 'divisions' => $divisions, 'rooms_types' => $rooms_types]);
     }

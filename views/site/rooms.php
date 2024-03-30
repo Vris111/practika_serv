@@ -16,9 +16,10 @@
     </div>
     <div style="display:flex; flex-direction: column; margin-top: 80px; margin-left: 50px">
         <h2>Добавить новое помещение</h2>
-        <form method="post" class="form" style='border: 1px solid black; width: 330px; height: 140px; padding: 20px; display: flex;
+        <form method="post" class="form" style='border: 1px solid black; width: 330px; height: 170px; padding: 20px; display: flex;
  flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+            <h3><?= $message ?? ''; ?></h3>
             <label class="label">Название <input style="width: 249px; height: 20px" type="text" name="name"></label>
             <div style='display:flex;'>
                 <p style="margin-right: 5px">Тип помещения </p>

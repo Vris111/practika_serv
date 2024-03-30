@@ -37,6 +37,7 @@
         <form method="post" class="" style='border: 1px solid black; width: 330px; height: 120px; padding: 20px; display: flex;
  flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+            <h3><?= $message ?? ''; ?></h3>
             <label class="label">Номер <input style="width: 250px; height: 20px" type="text" name="number"></label>
             <div style='display:flex;'>
                 <p style="margin-right: 5px">Помещение</p>
