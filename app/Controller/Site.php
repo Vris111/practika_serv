@@ -19,7 +19,7 @@ class Site
 //    public function index(Request $request): string
     {
         $posts = Post::all();
-//        $posts = Post::where('id', $request->id)->get();
+        $posts = Post::where('id', $request->id)->get();
         return (new View())->render('site.post', ['posts' => $posts]);
     }
     public function hello(): string
@@ -67,10 +67,21 @@ class Site
     }
     public function abonents(Request $request): string
     {
-        $abonents = Abonents::all();
         $divisions = Divisions::all();
-        if ($request->method === 'POST'&& Abonents::create($request->all())){
-            app()->route->redirect('/abonents');
+        if (isset($_POST['search'])) {
+            $search = $_POST['search'];
+            if ($request->method === 'POST'){
+                $abonents = Abonents::where('name', 'like', "%{$search}%")->orWhere('surname', 'like', "%{$search}%")
+                    ->orWhere('patronymic', 'like', "%{$search}%")->orWhere('date_of_birth', 'like', "%{$search}%")
+                    ->get();
+                return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
+            }
+        } else {
+            $abonents = Abonents::all();
+            if ($request->method === 'POST'&& Abonents::create($request->all())){
+                app()->route->redirect('/abonents');
+                return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
+            }
         }
         return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
     }
