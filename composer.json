@@ -15,7 +15,8 @@
         "illuminate/database": "^12.0@dev",
         "illuminate/events": "^12.0@dev",
         "nikic/fast-route": "^2.0@dev",
-        "vris111/collect": "dev-main"
+        "vris111/collect": "dev-main",
+        "vris111/practika_serv_2packet": "dev-main"
     },
     "autoload": {
         "psr-4": {

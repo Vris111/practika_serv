@@ -12,8 +12,7 @@ use Src\View;
 use Src\Request;
 use Model\User;
 use Src\Auth\Auth;
-use Src\Validator\Validator;
-
+use practika_serv_2packet\Validator;
 class Site
 {
     public function index(): string
@@ -186,7 +185,7 @@ class Site
 
             if($validator->fails()){
                 return new View('site.rooms',
-                    ['rooms'=>$rooms, 'rooms_types' =>$rooms_types ,'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+                    ['rooms'=>$rooms, 'divisions' => $divisions , 'rooms_types' =>$rooms_types ,'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
             }
             if($_FILES['img']){
                 $image = $_FILES['img'];

@@ -7,9 +7,9 @@ return [
         'admin' => \Middlewares\AdminSysMiddleware::class,
     ],
     'validators' => [
-        'required' => \Validators\RequireValidator::class,
-        'unique' => \Validators\UniqueValidator::class,
-        'specialSymbols' => \Validators\SpecialSymbolsValidator::class,
+        'required' => practika_serv_2packet\Validators\RequireValidator::class,
+        'unique' =>  practika_serv_2packet\Validators\UniqueValidator::class,
+        'specialSymbols' =>  practika_serv_2packet\Validators\SpecialSymbolsValidator::class,
     ],
     'routeAppMiddleware' => [
         'trim' => \Middlewares\TrimMiddleware::class,
