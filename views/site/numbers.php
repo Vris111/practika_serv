@@ -7,7 +7,7 @@
                 <div>
                     <form action="" method="post">
                         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
-                        <input style="width: 250px; padding: 3px" type="search" name="search" id="search-input" placeholder="Поиск по номеру помещения">
+                        <input style="width: 250px; padding: 3px" type="search" name="search" id="search-input" placeholder="Поиск по имени абонента">
                         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
                         <input type="submit" style="width: 70px "></input>
                     </form>
@@ -23,8 +23,22 @@
             foreach ($numbers as $number) {
                 echo '<div style="display: flex; flex-direction: row; justify-content: space-around; box-shadow: 1px 1px 2px 1px; >';
                 echo '<p style="font-size: 40px; aline-items: center;">' . $number->number . '</p>';
-                echo '<p style="font-size: 24px">' . $number->room_id . '</p>';
-                echo '<p style="font-size: 24px">' . $number->abonent_id . '</p>';
+                $room_id = '';
+                foreach ($rooms as $room){
+                    if ($room['id'] == $number->room_id){
+                        $room_id = $room['name'];
+                        break;
+                    }
+                }
+                echo '<p style="font-size: 24px">' . $room_id . '</p>';
+                $abonent_id = '';
+                foreach ($abonents as $abonent){
+                    if ($abonent['id'] == $number->abonent_id){
+                        $abonent_id = $abonent['name'];
+                        break;
+                    }
+                }
+                echo '<p style="font-size: 24px">' . $abonent_id . '</p>';
                 $count++;
                 echo '</div>';
             }

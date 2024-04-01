@@ -6,7 +6,7 @@
                 <div>
                     <form action="" method="post">
                         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
-                        <input style="width: 250px; padding: 3px" type="search" name="search" id="search-input" placeholder="Поиск по номеру подразделения">
+                        <input style="width: 250px; padding: 3px" type="search" name="search" id="search-input" placeholder="Поиск по названию подразделения">
                         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
                         <input type="submit" style="width: 70px"></input>
                     </form>
@@ -27,7 +27,14 @@
                 echo '<p style="font-size: 24px">' . $abonent->name . '</p>';
                 echo '<p style="font-size: 24px">' . $abonent->patronymic . '</p>';
                 echo '<p style="font-size: 24px">' . $abonent->date_of_birth . '</p>';
-                echo '<p style="font-size: 24px">' . $abonent->division_id . '</p>';
+                $division_name = '';
+                foreach ($divisions as $division){
+                    if ($division['id'] == $abonent->division_id){
+                        $division_name = $division['name'];
+                        break;
+                    }
+                }
+                echo '<p style="font-size: 24px">' . $division_name . '</p>';
                 $count++;
                 echo '</div>';
             }

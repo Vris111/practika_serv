@@ -98,7 +98,10 @@ class Site
         if (isset($_POST['search'])) {
             $search = $_POST['search'];
             if ($request->method === 'POST'){
-                $abonents = Abonents::where('division_id', 'like', "%{$search}%")->get();
+                $abonents = Abonents::select('abonents.*')
+                    ->join('divisions', 'abonents.division_id', '=', 'divisions.id')
+                    ->where('divisions.name', 'like', "%{$search}%")
+                    ->get();
                 return new View('site.abonents', ['abonents' => $abonents, 'divisions' => $divisions]);
             }
         } else {
@@ -135,7 +138,11 @@ class Site
         if (isset($_POST['search'])) {
             $search = $_POST['search'];
             if ($request->method === 'POST'){
-                $numbers = Telephones::where('room_id', 'like', "%{$search}%")->get();
+                $numbers = Telephones::select('telephones.*')
+                    ->join('abonents', 'telephones.abonent_id', '=', 'abonents.id')
+                    ->where('abonents.name', 'like', "%{$search}%")
+                    ->get();
+
                 return new View('site.numbers', ['numbers' => $numbers, 'rooms'=> $rooms, 'abonents' => $abonents]);
             }
         } else {

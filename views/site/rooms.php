@@ -6,8 +6,22 @@
             foreach ($rooms as $room) {
                 echo '<div style="display: flex; flex-direction: row; justify-content: space-around; box-shadow: 1px 1px 2px 1px; >';
                 echo '<p style="font-size: 40px">' . $room->name . '</p>';
-                echo '<p style="font-size: 24px">' . $room->type_id . '</p>';
-                echo '<p style="font-size: 24px">' . $room->division_id . '</p>';
+                $room_type = '';
+                foreach ($rooms_types as $rooms_type){
+                    if ($rooms_type['id'] == $room->type_id){
+                        $room_type = $rooms_type['name'];
+                        break;
+                    }
+                }
+                echo '<p style="font-size: 24px">' . $room_type . '</p>';
+                $division_name = '';
+                foreach ($divisions as $division){
+                    if ($division['id'] == $room->division_id){
+                        $division_name = $division['name'];
+                        break;
+                    }
+                }
+                echo '<p style="font-size: 24px">' . $division_name . '</p>';
                 echo '<p style="font-size: 24px"><img style="width: 30px; height: 30px" src="/test/img/' . $room->img . '" alt=""></p>';
                 echo '</div>';
             }
