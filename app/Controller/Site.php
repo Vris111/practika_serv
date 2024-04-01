@@ -176,7 +176,6 @@ class Site
         $divisions = Divisions::all();
         $rooms_types = Rooms_types::all();
         if ($request->method === 'POST'){
-
             $validator = new Validator($request->all(), [
                 'name' => ['required', 'unique:divisions,name', 'specialSymbols'],
             ], [
@@ -189,19 +188,14 @@ class Site
                 return new View('site.rooms',
                     ['rooms'=>$rooms, 'rooms_types' =>$rooms_types ,'message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
             }
-
             if($_FILES['img']){
                 $image = $_FILES['img'];
                 $root = app()->settings->getRootPath();
                 $path = $_SERVER['DOCUMENT_ROOT'] . $root . '/public/img/';
-                $name = mt_rand(0, 1000).$image['name'];
-
+                $name = mt_rand(0, 10000).$image['name'];
                 move_uploaded_file($image['tmp_name'], $path . $name);
-                var_dump(move_uploaded_file($image['tmp_name'], $path . $name));
-
                 $building_data = $request->all();
                 $building_data['img'] = $name;
-
                 if(Rooms::create($building_data)){
                     app()->route->redirect('/rooms');
                 }

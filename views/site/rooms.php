@@ -1,6 +1,12 @@
 <h1 class="topic">Помещения</h1>
 <div style="display: flex; gap 50px">
     <div style="margin-left: 14%; margin-top: 40px; border: 1px solid black; width: 1000px; height: 600px; padding: 20px; box-shadow: 5px 5px 10px 1px;">
+        <div style="display: flex; font-size: 24px; gap: 100px">
+            <p style="margin-right: 180px">Название</p>
+            <p>Тип помещения</p>
+            <p>Подразделение</p>
+            <p>Фото</p>
+        </div>
         <div style="border: 1px solid black; width: 980px; padding: 10px; height: 580px; box-shadow: 5px 5px 10px 1px;">
             <?php
             foreach ($rooms as $room) {

@@ -1,6 +1,10 @@
 <h1 class="topic">Подразделения</h1>
 <div style="display: flex; gap 50px">
     <div style="margin-left: 27%; margin-top: 40px; border: 1px solid black; width: 800px; height: 600px; padding: 20px; box-shadow: 5px 5px 10px 1px;">
+        <div style="display: flex; font-size: 24px; gap: 100px">
+            <p style="margin-right: 240px; margin-left: 100px">Название</p>
+            <p>Тип подразделения</p>
+        </div>
         <div style="border: 1px solid black; width: 780px; padding: 10px; height: 580px; box-shadow: 5px 5px 10px 1px;">
             <?php
             foreach ($divisions as $division) {
