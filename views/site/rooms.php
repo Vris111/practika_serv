@@ -22,7 +22,7 @@
                     }
                 }
                 echo '<p style="font-size: 24px">' . $division_name . '</p>';
-                echo '<p style="font-size: 24px"><img style="width: 30px; height: 30px" src="/test/img/' . $room->img . '" alt=""></p>';
+                echo '<p style="font-size: 24px"><img style="width: 30px; height: 30px" src="/public/img/' . $room->img . '" alt=""></p>';
                 echo '</div>';
             }
             ?>
@@ -31,7 +31,7 @@
     <div style="display:flex; flex-direction: column; margin-top: 80px; margin-left: 50px">
         <h2>Добавить новое помещение</h2>
         <form method="post" class="form" style='border: 1px solid black; width: 330px; height: 170px; padding: 20px; display: flex;
- flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;'>
+ flex-direction:column; gap: 10px; background-color: #fc5e00; margin-top: 10px;' enctype="multipart/form-data">
             <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
             <h3><?= $message ?? ''; ?></h3>
             <label class="label">Название <input style="width: 249px; height: 20px" type="text" name="name"></label>
@@ -57,8 +57,6 @@
             </div>
             <div style='display:flex'>
                 <label class="label">Фото  <input type="file" name="img"></label>
-                <?php if(isset($room) && $room->img !== null): ?>
-                <?php endif; ?>
             </div>
             <button class="btn">Добавить</button>
         </form>
