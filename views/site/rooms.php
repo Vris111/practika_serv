@@ -28,7 +28,7 @@
                     }
                 }
                 echo '<p style="font-size: 24px">' . $division_name . '</p>';
-                echo '<p style="font-size: 24px"><img style="width: 30px; height: 30px" src="/public/img/' . $room->img . '" alt=""></p>';
+                echo '<p style="font-size: 24px"><img style="width: 30px; height: 30px" src="/test/public/img/' . $room->img . '" alt=""></p>';
                 echo '</div>';
             }
             ?>
